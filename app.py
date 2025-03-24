@@ -25,6 +25,10 @@ def solve_captcha(image):
     captcha_text = pytesseract.image_to_string(processed_image, config='--psm 8').strip()
     return captcha_text
 
+@app.route('/')
+def home():
+    return "Hello, World!"
+
 @app.route('/solve_captcha', methods=['POST'])
 def solve_captcha_endpoint():
     file = request.files.get('image')
